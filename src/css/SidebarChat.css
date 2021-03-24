@@ -1,0 +1,42 @@
+.sidebarchat{
+    display: flex;
+    align-items: center;
+    padding:15px;
+    border-bottom: 1px solid lightgray;
+    cursor: pointer;
+}
+.sidebarchat:hover{
+    background-color:#ebebeb;
+}
+.sidebarchat__info{
+    margin-left:15px;
+    position: relative;
+    width: 100%;
+}
+.sidebarchat__info > h3{
+    width: 190px;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+}
+
+.sidebarchat__info > small{
+    position: absolute;
+    right: 0;
+    top: 5px;
+    
+}
+
+.sidebarchat__info > .MuiSvgIcon-root{
+    position: absolute;
+    right: 0;
+    bottom:-3px;
+    display: none;
+
+}
+
+.sidebarchat:hover > .sidebarchat__info > .MuiSvgIcon-root{
+    display: inline;
+    color: gray;
+}
+
+
