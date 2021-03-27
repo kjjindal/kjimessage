@@ -1,11 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit';
 import userReducer from '../features/userSlice';
 import chatReducer from '../features/chatSlice';
+import cameraReducer from '../features/cameraSlice';
+import statusReducer from '../features/statusSlice';
+
 
 
 export default configureStore({
   reducer: {
     user: userReducer,
-    chat:chatReducer
+    chat:chatReducer,
+    camera:cameraReducer,
+    status:statusReducer,
+
   },
 });

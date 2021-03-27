@@ -9,12 +9,14 @@ import { selectProfileIsOpen } from '../features/userSlice';
 import SidebarProfile from './SidebarProfile';
 
 
+
 function Imessage(){
 
 
     const [chatid,setchatid]=useState(null)
     const chatId=useSelector(selectChatId)
     const profile=useSelector(selectProfileIsOpen);
+   
 
 
     useEffect(()=>{
@@ -22,12 +24,15 @@ function Imessage(){
     setchatid(chatId)
     },[chatId])
     
-
+    
 
     return (
         <>
         <div className="imessage">
-            <div className="imessage__header"></div>
+
+             
+          
+<div className="imessage__header"></div>
             <div className="imessage__body">
 
                 {profile ? (<SidebarProfile />):(<Sidebar />)}
@@ -39,6 +44,11 @@ function Imessage(){
 
             ):( <Chat />)} 
             </div>
+
+
+            
+
+           
             
            
             
@@ -51,3 +61,8 @@ function Imessage(){
 
 
 export default Imessage
+
+
+
+
+

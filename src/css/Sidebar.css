@@ -71,3 +71,7 @@
     background-color: rgba(0,0,0,.2);
 }
 
+
+.sidebar__icons .MuiBadge-colorSecondary{
+    background-color: #009688 !important;
+}

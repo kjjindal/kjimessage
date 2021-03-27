@@ -1,0 +1,39 @@
+.webcamcapture{
+    flex: 1;
+    
+}
+.webcamcapture__header{
+    background-color: #00BFA5;
+    padding:5px 10px;
+    display: flex;
+    align-items: center;
+    height: 40px;
+}
+.webcamcapture__close{
+    color: white;
+    cursor: pointer;
+
+}
+
+.webcamcapture__header > h3{
+    color: white;
+    margin-left: 8px;
+    font-weight: 700;
+
+}
+
+.webcamcapture__body{
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.webcamcapture__cameraicon{
+   margin-top: -25px !important;
+    
+
+
+}

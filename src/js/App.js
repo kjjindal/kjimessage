@@ -1,15 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {  login, logout, selectUser } from '../features/userSlice';
 import { auth } from './firebase';
 import Imessage from './Imessage';
 import Login from './Login';
 import '../css/App.css';
+import Status from './Status';
+import { selectStatusIsOpen } from '../features/statusSlice';
 
 function App() {
 
   const user=useSelector(selectUser);
   const dispatch=useDispatch();
+  const status=useSelector(selectStatusIsOpen);
+  
 
 
   useEffect(()=>{
@@ -30,15 +34,19 @@ function App() {
 
   },[dispatch])
 
+
+  
+
    
   return (
     <div className="app">
       {!user ? (
         <Login />
 
-      ):(
-      <Imessage />
-      )}
+      ):
+       !status ? (<Imessage />):(<Status />)
+      
+      }
 
 
       

@@ -1,0 +1,74 @@
+.statussidebar{
+    background-color: #141414;
+    height:100%;
+    flex: 0.3;
+    display: flex;
+    flex-direction: column;
+}
+.statussidebar__header{
+    display: flex;
+    padding:50px 10px 20px 10px  ;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.statussidebar__headerleft{
+    display: flex;
+    align-items: center;
+}
+.statussidebar__uploadstatus >.MuiIconButton-label > .MuiSvgIcon-root {
+    cursor: pointer !important;
+    color: gray !important;
+
+}
+.statussidebar__info{
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+
+}
+.statussidebar__info > h4{
+    color: white;
+    font-size: 16px;
+
+}
+.statussidebar__info > p{
+    color: gray;
+    font-weight: 400;
+    font-size: 13px;
+}
+.statussidebar__status{
+    display:flex;
+    flex-direction: column;
+    flex: 1;
+    overflow-y: scroll;
+}
+.statussidebar__status::-webkit-scrollbar {
+    width: 6px!important;
+    height: 6px!important;
+}
+.statussidebar__status::-webkit-scrollbar-thumb {
+    background-color: #323232;
+}
+.statussidebar__status::-webkit-scrollbar-track {
+   background-color: #141414;
+}
+
+ .line{
+    padding-left: 15px !important;
+    padding-right: 15px;
+    
+   
+}
+.line > hr {
+   
+    border: 1px solid #202020;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.line > p {
+    font-size: 13px;
+    color: gray;
+}
+

@@ -9,6 +9,7 @@ import { useSelector,useDispatch } from 'react-redux';
 import firebase from 'firebase';
 import ChatIcon from '@material-ui/icons/Chat';
 import DonutLargeIcon from '@material-ui/icons/DonutLarge';
+import { setStatus } from '../features/statusSlice';
 
 
 function Sidebar(){
@@ -16,6 +17,13 @@ function Sidebar(){
     const [sidebarChats,setSidebarChats]=useState([]);
     const dispatch=useDispatch();
     const [anchorEl, setAnchorEl] = useState(null);
+    const [recent,setrecent]=useState([]);
+
+
+
+    const handlestatus=()=>{
+        dispatch(setStatus())
+    }
 
 
 
@@ -31,6 +39,23 @@ function Sidebar(){
       };
 
 
+      useEffect(()=>{
+        const tsToMillis = firebase.firestore.Timestamp.now().toMillis();
+        const compareDate = new Date(tsToMillis - (24 * 60 * 60 * 1000))
+        db.collection('status').where("seen",'==',false)
+        .where('timestamp','>',compareDate)
+        .onSnapshot((snapshot)=>{
+            setrecent(snapshot.docs.map((doc)=>
+           ( {
+               id:doc.id,
+               data:doc.data()
+            })
+            ))
+        })
+        
+    },[])
+
+
 
     useEffect(()=>{
         db.collection('chatgroup')
@@ -41,6 +66,7 @@ function Sidebar(){
                 id:doc.id,
                 data:doc.data()
             })
+           
           
 
 
@@ -67,6 +93,7 @@ function Sidebar(){
         dispatch(proflieIsOpen())
     }
 
+    
 
     return (
         <>
@@ -81,10 +108,12 @@ function Sidebar(){
 
                 <Tooltip title="status">
                 <IconButton  variant="outlined" className="sidebar__inputbutton" >
-                <Badge color="secondary" overlap="circle" badgeContent=" " variant="dot">
-                <DonutLargeIcon   />
 
-</Badge>
+                 {recent[0] ? (<Badge color="secondary" overlap="circle" badgeContent=" " variant="dot">
+                <DonutLargeIcon   onClick={handlestatus}   />
+
+</Badge>):(<DonutLargeIcon   onClick={handlestatus}   />) }   
+                
                 </IconButton>
                 </Tooltip>
 

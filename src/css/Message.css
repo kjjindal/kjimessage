@@ -44,7 +44,8 @@
 }
 
 .message__sender > p {
-    background-color: #dcf8c6;;
+    background-color: #dcf8c6;
+    position: relative;
 }
 
 .message__sender > small{
@@ -54,3 +55,21 @@
     bottom: -5px;
     left: 15px;
 }
+.message > p >.message__expandicon{
+   
+    display: none !important;
+}
+.message__sender > p >.message__expandicon{
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none !important;
+    color: gray;
+    cursor: pointer;
+}
+.message__sender > p:hover >.message__expandicon{
+    display: inline !important;
+    opacity: 0.8;
+}
+
+

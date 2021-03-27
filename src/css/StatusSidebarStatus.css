@@ -1,0 +1,33 @@
+.statussidebarstatus{
+    display: flex;
+    padding: 12px;
+    align-items: center;
+    cursor: pointer;
+
+}
+.statussidebarstatus:hover{
+    background-color:#262626;
+}
+.statussidebarstatus__info{
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+}
+.statussidebarstatus__info > h3{
+    font-size: 17px;
+    font-weight: 400;
+    color: white;
+
+}
+.statussidebarstatus__info > p{
+    color: gray;
+    font-size: 13px;
+    line-height: 20px;
+
+}
+.statussidebarstatus__avatar{
+    border: 3px solid #02897C ;
+}
+.statussidebarstatus__avatarviewed{
+    border:3px solid white !important;
+}

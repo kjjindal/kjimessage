@@ -1,5 +1,5 @@
 import {  IconButton, Menu, MenuItem, Tooltip ,Badge} from '@material-ui/core';
-import {   AttachFile, MoreVert, SearchOutlined, Send } from '@material-ui/icons';
+import {   AttachFile, Camera, MoreVert, SearchOutlined, Send } from '@material-ui/icons';
 import React, { useEffect, useRef, useState } from 'react';
 import Message from './Message';
 import '../css/Chat.css';
@@ -10,12 +10,19 @@ import firebase from 'firebase';
 import { proflieIsOpen, selectUser } from '../features/userSlice';
 import FlipMove from 'react-flip-move';
 import {storage} from './firebase';
-import {InsertEmoticon} from '@material-ui/icons';
-
+import { closeCamera, openCamera, resetCamerImage, selectCamera, selectCameraImage } from '../features/cameraSlice';
+import WebcamCapture from './WebcamCapture';
+import {v4 as uuid} from 'uuid';
+import useSound from 'use-sound';
+import notification from './notification.mp3';
 
 
 function Chat(){
     const messagesEndRef = useRef(null)
+    const camera=useSelector(selectCamera);
+
+    
+
 
     const scrollToBottom = () => {
       messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
@@ -32,6 +39,9 @@ function Chat(){
     const [messages,setMessages]=useState([]);
     const [image,setimage]=useState(null);
     const [progress,setProgress]=useState(0);
+    const imagesrc=useSelector(selectCameraImage);
+    const [play] = useSound(notification);
+
 
     
     useEffect(() => {
@@ -62,6 +72,10 @@ function Chat(){
 
   const handleProfile=()=>{
     dispatch(proflieIsOpen())
+}
+
+const opencamera=()=>{
+  dispatch(openCamera());
 }
 
   const handleDeleteChat=()=>{
@@ -135,6 +149,43 @@ function Chat(){
               }
           )
         }
+        else if (imagesrc){
+          const id=uuid();
+
+          const uploadtask=storage.ref(`images/${id}`).putString(imagesrc,"data_url");
+  
+            uploadtask.on(
+                "state_changed",
+                null,
+                error=>{
+                    console.log(error,"error")
+                },
+                ()=>{
+                    storage
+                    .ref("images")
+                    .child(id)
+                    .getDownloadURL()
+                    .then(urls=>{
+                      db.collection('chatgroup').doc(chatid).collection('messages').add({
+       
+                        timestamp:firebase.firestore.FieldValue.serverTimestamp(),
+                        message:input,
+                        uid:user.uid,
+                        photo:user.photo,
+                        email:user.email,
+                        displayName:user.displayName,
+                        imagepost:urls || null,
+               });
+               dispatch(resetCamerImage())
+               dispatch(closeCamera())
+                       
+                    })
+                }
+
+            )
+
+
+        }
         else{
           db.collection('chatgroup').doc(chatid).collection('messages').add({
      
@@ -152,7 +203,10 @@ function Chat(){
         setinput("");
         setimage(null);
         setProgress(0);
+        play();
     }
+
+
 
 
     return (
@@ -196,7 +250,13 @@ function Chat(){
              
 
             </div>
-            <div className="chat__body">
+
+            {camera ? (
+              <WebcamCapture  />
+
+            ):(
+              <>
+<div className="chat__body">
                 <FlipMove>
                     {messages.map(({id,data:{timestamp,message,email,photo,imagepost}})=>
                      (
@@ -207,6 +267,7 @@ function Chat(){
                         email={email}
                         photo={photo}
                         imagepost={imagepost}
+                        id={id}
                         />
                     )
                 )}
@@ -214,10 +275,18 @@ function Chat(){
                 <div ref={messagesEndRef} />
             
             </div>
+
+
+
+              </>
+
+
+            )   }
+            
             <div className="chat__input">
-              <Tooltip title="Emoji">
+              <Tooltip title="Camera">
                 <IconButton>
-              <InsertEmoticon    />
+              <Camera   onClick={opencamera}   />
               </IconButton>
               </Tooltip>
               
@@ -243,12 +312,13 @@ function Chat(){
                        </Tooltip>
                 <form>
                     <input value={input} onChange={(e)=>{setinput(e.target.value)}}    type='text'  placeholder="Type here message " />
-                    <button onClick={sendMessage} disabled={!input && !image }> Send Message </button>
+                    <button onClick={sendMessage} disabled={!input && !image && !imagesrc }> Send Message </button>
                 </form>
-<IconButton onClick={sendMessage} disabled={!input && !image}>
+<IconButton onClick={sendMessage} disabled={!input && !image && !imagesrc}>
 <Send  />
 </IconButton>
             </div>
+           
             
         </div>
 

@@ -47,6 +47,11 @@
     border-top:1px solid lightgray;
     background-color: #f5f5f5;
 }
+.chat__input .MuiBadge-colorError {
+
+    background-color: #009688 !important;
+
+}
 .chat__input > form {
     flex: 1;
     display: flex;
