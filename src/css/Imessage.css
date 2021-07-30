@@ -1,8 +1,15 @@
+html{
+    --imessage-color:#009688;
+    --imessage-backgroundcolor:#D6DBD9;
+    --selectchatgroup-backgroundcolor:#F8F9FA;
+    --sidebar-header:#f5f5f5;
+}
+
 .imessage{
     display: grid;
     place-items: center;
     height: 100vh;
-    background-color: #D6DBD9;
+    background-color: var(--imessage-backgroundcolor);
     
     
 }
@@ -11,7 +18,7 @@
     top:0;
     height:18vh;
     width:100%;
-    background-color: #009688;
+    background-color:var(--imessage-color);
     z-index: 100;
 }
 

@@ -10,7 +10,8 @@
     flex: 0.163;
     background-color: #00BFA5;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .sidebarprofile__headerprofile{

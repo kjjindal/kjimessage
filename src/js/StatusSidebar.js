@@ -8,6 +8,7 @@ import StatusSidebarStatus from './StatusSidebarStatus';
 import firebase from 'firebase';
 import { db, storage } from './firebase';
 
+
 function StatusSidebar(){
    
 

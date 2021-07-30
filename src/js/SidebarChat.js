@@ -28,6 +28,8 @@ function SidebarChat({id,chatName,chatPhoto,chatEmail}){
   },[id])
     const handleChat=()=>{
 
+
+
 dispatch(setChat({
     chatId:id,
     chatName:chatName,

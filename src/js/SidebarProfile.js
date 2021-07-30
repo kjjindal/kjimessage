@@ -3,7 +3,8 @@ import { useSelector,useDispatch } from 'react-redux';
 import { proflieIsClose, selectUser } from '../features/userSlice';
 import '../css/SidebarProfile.css';
 import {Edit,ArrowBack} from '@material-ui/icons';
-import { IconButton } from '@material-ui/core';
+import {IconButton,Switch } from '@material-ui/core';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 
 function SidebarProfile(){
@@ -16,6 +17,37 @@ function SidebarProfile(){
     const handleSidebarClose=()=>{
         dispatch(proflieIsClose())
     }
+
+
+    const handleTheme=(e)=>{
+
+        if(e.target.checked){
+            document.documentElement.style.setProperty('--imessage-color',"#090E11");
+            document.documentElement.style.setProperty('--imessage-backgroundcolor','#090E11');
+            document.documentElement.style.setProperty('--selectchatgroup-backgroundcolor','#262D31');
+            // document.documentElement.style.setProperty('--sidebar-header','#2A2F32');
+            // document.documentElement.style.setProperty('--sidebar-chats','#131C21');
+
+            
+
+
+        }
+        else{
+            document.documentElement.style.setProperty('--imessage-color',"#009688");
+            document.documentElement.style.setProperty('--imessage-backgroundcolor',"#D6DBD9");
+            document.documentElement.style.setProperty('--selectchatgroup-backgroundcolor','#F8F9FA');
+            // document.documentElement.style.setProperty('--sidebar-header','#F5F5F5');
+            // document.documentElement.style.setProperty('--sidebar-chats','#F5F5F5');
+
+
+
+
+        }
+
+
+    }
+
+
 
 
 
@@ -32,6 +64,10 @@ function SidebarProfile(){
                
                 <h3> Profile  </h3>
             </div>
+
+            
+            <FormControlLabel control={ <Switch inputProps={{ 'aria-label': 'primary checkbox' }} onChange={handleTheme}  />   } label="Dark Mode" />
+
 
                 
 

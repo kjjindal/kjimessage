@@ -1,4 +1,4 @@
-.login{
+/* .login{
     display: grid;
     place-items: center;
     height:100vh;
@@ -21,4 +21,112 @@
 .login > button:hover{
     background:linear-gradient(to right,lightgreen,green);
     color: black;
+} */
+
+
+
+.login{
+background-color: #D7DCD8;
+
+    display: grid;
+    place-items: center;
+    height: 100%;
+    width: 100%;
+   
+}
+.login__header{
+    width: 100%;
+    height: 30%;
+    position:absolute;
+    top: 0;
+    background-color:#00BFA5;
+    display:flex;
+    align-items: center;
+  
+}
+.login__header > h2{
+    margin-left: 150px;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+  
+}
+.login__header > h2 > img{
+    width: 50px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.login__main{
+    width:65%;
+    background-color:#FFFFFF;
+    z-index: 100;
+    margin-top: 150px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    box-shadow: 0px 1px 8px -1px;
+
+}
+
+.login__upper{
+    display: flex;
+    padding:50px;
+
+    justify-content: space-between;
+}
+.login__left{
+
+
+}
+.login__left >ol{
+    padding: 0 0 0 24px;
+    
+}
+.login__left > ol > li {
+    font-size: 18px;
+    line-height: 28px;
+    color: #4a4a4a;
+    margin-top: 18px;
+}
+.login__left > h1{
+    margin-bottom: 52px;
+    font-size: 28px;
+    font-weight: 300;
+    line-height: normal;
+    color: #525252;
+
+}
+.login__right{
+
+}
+.login__right > img {
+    width:300px;
+    height: 300px;
+    border-radius: 999px;
+    border: 1px solid lightgray;
+    cursor: pointer;
+}
+
+.login__left > p{
+    margin-top: 50px;
+   color: #009688;
+   cursor: pointer;
+}
+
+.login__down {
+  
+background-color: #D7DCD8;
+    background-color: #f9f9f9;
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    margin-bottom: 5px;
+
+}
+.login__down > img {
+    height: 300px;
+    width: 500px;
 }
