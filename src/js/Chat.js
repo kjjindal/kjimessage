@@ -15,6 +15,7 @@ import WebcamCapture from './WebcamCapture';
 import {v4 as uuid} from 'uuid';
 import useSound from 'use-sound';
 import notification from './notification.mp3';
+import emailjs from 'emailjs-com';
 
 
 function Chat(){
@@ -198,7 +199,18 @@ const opencamera=()=>{
             imagepost:null,
         })
 
+        if(user.email!==chatemail){
+             emailjs.send('service_ytoz8zu', 'template_ywb61q7',{from_name:`${user.displayName}(${user.email})`,to_name:`${chatname} member`,to_message:input,to_mail:chatemail}, 'user_YVQCHSsWLsfi6xTIqaS1B')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
+
         }
+        }
+        
+     
          
         setinput("");
         setimage(null);

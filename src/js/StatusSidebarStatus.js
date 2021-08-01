@@ -1,10 +1,8 @@
 import { Avatar } from '@material-ui/core';
 import React from 'react';
 import '../css/StatusSidebarStatus.css';
-// import moment from 'moment';
 import { useDispatch } from 'react-redux';
 import {  setStatusShow } from '../features/statusSlice';
-import { db } from './firebase';
 
 
 function StatusSidebarStatus({profilepic,name,timestamp,id,statusurl,seen}){

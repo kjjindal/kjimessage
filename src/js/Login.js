@@ -2,6 +2,8 @@
 import React from 'react';
 import '../css/Login.css';
 import {auth,provider} from './firebase';
+import w1 from '../image/whatsapp1.png';
+import w3 from '../image/whatsapp3.jpg';
 
 
 
@@ -35,7 +37,7 @@ function Login(){
         <div className="login">
         <div className="login__header">
            
-              <h2> <img src="https://web.whatsapp.com/img/favicon_c5088e888c97ad440a61d247596f88e5.png" alt="web" /> WHATSAPP WEB  </h2>
+              <h2> <img src={w1} alt="web" /> WHATSAPP WEB  </h2>
 
         </div>
         <div className="login__main">
@@ -58,7 +60,7 @@ function Login(){
         </div>
         <div className="login__down">
 
-        <img src="https://web.whatsapp.com/img/qr-video_07f8d2958696dceefa4f4676aeb4663e.jpg" alt="help"  />
+        <img src={w3} alt="help"  />
 
         </div>
         

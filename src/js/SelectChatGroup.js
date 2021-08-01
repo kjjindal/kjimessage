@@ -1,5 +1,7 @@
 import React from 'react';
 import '../css/SelectChatGroup.css';
+import w2 from '../image/whatsapp2.jpg';
+
 
 const SelectChatGroup = () => {
 
@@ -7,7 +9,7 @@ const SelectChatGroup = () => {
         <>
         <div className="selectchatgroup">
             <div className="selectchatgroup__box">
-                <img src="https://web.whatsapp.com/img/intro-connection-light_c98cc75f2aa905314d74375a975d2cf2.jpg" alt="selectchatgroup" />
+                <img src={w2} alt="selectchatgroup" />
                  <h3> Keep your phone connected  </h3>
                  <p> WhatsApp connects to your phone to sync messages. To reduce data usage, connect your phone to Wi-Fi.  </p>
                  <hr />
