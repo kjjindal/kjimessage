@@ -7,6 +7,8 @@ import {selectUser} from '../features/userSlice';
 import StatusSidebarStatus from './StatusSidebarStatus';
 import firebase from 'firebase';
 import { db, storage } from './firebase';
+import { ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function StatusSidebar(){
@@ -104,6 +106,8 @@ function StatusSidebar(){
                     })
                      
                   })
+
+                  toast('successfully uploaded status !')
               }
           )
 
@@ -195,7 +199,9 @@ function StatusSidebar(){
 
             </div>
 
-            
+            <ToastContainer position="top-center" autoClose={3000} >
+
+            </ToastContainer>
         </div>
 
 

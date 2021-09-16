@@ -10,6 +10,8 @@ import firebase from 'firebase';
 import ChatIcon from '@material-ui/icons/Chat';
 import DonutLargeIcon from '@material-ui/icons/DonutLarge';
 import { setStatus } from '../features/statusSlice';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function Sidebar(){
@@ -85,6 +87,7 @@ function Sidebar(){
             chatEmail:user?.email
         
         }) 
+        toast("successfully added new group!");
         }
        
     }
@@ -167,6 +170,8 @@ function Sidebar(){
                    )}
 
             </div>
+            <ToastContainer position="top-center" autoClose={3000}>
+        </ToastContainer>
 
         </div>
         </>

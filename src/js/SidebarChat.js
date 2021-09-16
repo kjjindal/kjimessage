@@ -6,6 +6,7 @@ import {setChat} from '../features/chatSlice';
 import { db } from './firebase';
 import * as timeago from 'timeago.js';
 import {ExpandMore} from '@material-ui/icons';
+import { setloading, unsetloading } from '../features/loadingSlice';
 
 
 function SidebarChat({id,chatName,chatPhoto,chatEmail}){
@@ -28,13 +29,20 @@ function SidebarChat({id,chatName,chatPhoto,chatEmail}){
   },[id])
     const handleChat=()=>{
 
-
+dispatch(setloading())
 
 dispatch(setChat({
     chatId:id,
     chatName:chatName,
     chatEmail:chatEmail,
 }))
+
+// dispatch(unsetloading());
+
+
+
+
+
 
     }
     return (
